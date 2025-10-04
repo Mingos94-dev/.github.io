@@ -1,96 +1,146 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Domingos Pereira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilo Minimalista e Limpo */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7; /* Fundo muito claro */
-    color: #333; /* Cor de texto escura */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ocupa a altura total da janela */
-    margin: 0;
-}
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('joias-de-luxo-1200x900.jpg');
+            background-position: center;
+        }
 
-.container {
-    background-color: #fff; /* Fundo branco para a caixa de conteúdo */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-}
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+        }
 
-h1 {
-    font-size: 2.2em;
-    margin-bottom: 5px;
-    color: #1a1a1a;
-}
+        .header-image {
+            width: 100%;
+            height: 120px;
+            background: url('https://via.placeholder.com/420x120?text=Header+Image') center/cover no-repeat;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: -30px;
+        }
 
-h2 {
-    font-size: 1.1em;
-    color: #666;
-    margin-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
 
-.contact-info p {
-    margin: 10px 0;
-    line-height: 1.5;
-    font-size: 1em;
-}
+        h2 {
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
 
-/* Estilo para links e botões */
-a {
-    color: #007bff; /* Azul clássico */
-    text-decoration: none;
-    transition: color 0.3s;
-}
+        .contact-card p {
+            margin: 12px 0;
+            line-height: 1.6;
+            font-size: 1em;
+        }
 
-a:hover {
-    color: #0056b3; /* Azul mais escuro ao passar o rato */
-    text-decoration: underline;
-}
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-/* Estilo das ligações sociais/outros */
-.social-links {
-    margin-top: 25px;
-    font-size: 0.9em;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-}
+        a:hover, .btn:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
 
-.social-links a {
-    margin: 0 10px;
-    font-weight: bold;
-}
+        .social-links {
+            margin-top: 25px;
+            font-size: 1em;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 700;
+            background: #007bff;
+            color: #fff !important;
+            border: none;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .btn.linkedin {
+            background: #0077b5;
+        }
+
+        .btn.cv {
+            background: #333;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            color: #fff;
+        }
+
+        .footer-status {
+            margin-top: 30px;
+            font-size: 0.95em;
+            color: #555;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" role="main">
+        <header class="header-image" role="banner"></header>
         <h1>Domingos Pereira</h1>
-        <h2>Página de Contacto</h2>
+        <h2>Técnico de Precisão | Joalharia & Relojoaria</h2>
 
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
-            <p><strong>Telefone:</strong> <a href="tel:+41762421297">+41 76 242 1297</a></p>
-            <p><strong>Morada:</strong> Chemin de la Redoute 20, 1260 Nyon, Suisse</p>
-            <p class="status">Residente Suíço com Permissão B</p>
+        <div class="contact-card">
+            <p>📧 Email: <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
+            <p>📞 Telefone: <a href="tel:+41762421297">+41 76 242 1297</a></p>
+            <p>📍 Nyon, Suíça</p>
         </div>
-        
+
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/seu-perfil" target="_blank">LinkedIn</a>
-            |
-            <a href="seu_cv_aqui.pdf" target="_blank">Ver CV</a>
+            <!-- Replace the URL below with your actual LinkedIn profile link -->
+            <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn linkedin" title="Este é um link de exemplo. Substitua pelo seu perfil real.">
+                LinkedIn
+            </a>
+            <!-- Replace 'domingos_pereira_cv.pdf' with your actual CV file name and ensure it is uploaded to your site -->
+            <a href="domingos_pereira_cv.pdf" target="_blank" class="btn cv">
+                Descarregar CV
+            </a>
         </div>
-    </div>
-</body>
-</html>
+        <footer class="footer-status">
+            <!-- Replace 'Português' and 'Francês' with your actual languages if different -->
+            Residente Suíço - Permissão B | Proficiente em Português e Francês
+        </footer>
+</html>center;
+}
+/* ...existing code... */
