@@ -84,7 +84,7 @@
     const marquee = document.getElementById('events-marquee');
     const EB_TOKEN = "I7XSPMKHWDAD7HSUG24Q";
 
-    fetch(`https://www.eventbriteapi.com/v3/events/search/?q=jewelry&sort_by=date&token=${EB_TOKEN}`)
+    fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=jewelry&sort_by=date&token=${EB_TOKEN}`)
       .then(r => r.json())
       .then(data => {
         if (data.events && data.events.length) {
