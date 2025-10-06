@@ -14,78 +14,36 @@
             min-height: 100vh;
             padding-top: 68px; /* espaço para a barra maior de eventos */
         }
-        /* Barra de eventos */
         .event-bar {
             position: fixed;
             top: 0; left: 0; width: 100%; z-index: 9999;
             background: #111;
             color: #fff;
-            padding: 16px 0; /* Dobro da altura */
-            font-size: 1.4em; /* Maior fonte */
+            padding: 16px 0;
+            font-size: 1.4em;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
         }
-        .marquee {
+        .marquee-content {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 35s linear infinite;
+            position: relative;
+            left: 100%;
         }
-        @keyframes marquee {
-            0% { transform: translateX(100%);}
-            100% { transform: translateX(-100%);}
-        }
-        .profile-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 0.75rem 0.75rem 0 0;
-        }
-        .card {
-            border-radius: 0.75rem;
-            background: none;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-        }
-        .card-body, .card-footer {
-            background: none !important;
-        }
-        .card-title, h2, .footer-status, .contact-card p, .btn, .btn-cv {
-            text-shadow: 1px 2px 10px rgba(0,0,0,0.5);
-        }
-        .btn-cv {
-            background: #333;
-            color: #fff;
-        }
-        .btn-cv:hover {
-            background: #222;
-            color: #fff;
-        }
-        .footer-status {
-            font-size: 0.98em;
-            color: #fff;
-        }
-        h1, h2 {
-            color: #fff;
-        }
-        .card-title {
-            color: #fff;
-        }
-        .contact-card p, .contact-card a {
-            color: #fff;
+        body {
+            padding-top: 68px;
         }
     </style>
 </head>
 <body>
-    <!-- Barra de eventos de joalharia/relojoaria automática e fixa -->
     <div class="event-bar">
         <div class="overflow-hidden">
-            <div id="events-marquee" class="marquee">
-                Carregando eventos de joalharia e relojoaria...
-            </div>
+            <div id="events-marquee" style="width:100%;height:2em;"></div>
         </div>
     </div>
     <script>
     const marquee = document.getElementById('events-marquee');
     const EB_TOKEN = "I7XSPMKHWDAD7HSUG24Q";
-    // Eventos fixos futuros (fallback)
     const fallbackEvents = [
       "<b>Baselworld 2026 (Suíça)</b> ~ Março 2026 <a href='https://www.baselworld.com/' target='_blank' style='color:#ffd700;'>Ver</a>",
       "<b>JCK Las Vegas 2025 (EUA)</b> ~ Junho 2025 <a href='https://www.jckonline.com/' target='_blank' style='color:#ffd700;'>Ver</a>",
@@ -95,6 +53,35 @@
       "<b>S.I.H.H. Geneva 2026 (Suíça)</b> ~ Abril 2026 <a href='https://www.hautehorlogerie.org/' target='_blank' style='color:#ffd700;'>Ver</a>",
       "<b>International Jewellery London 2025</b> ~ Setembro 2025 <a href='https://www.jewellerylondon.com/' target='_blank' style='color:#ffd700;'>Ver</a>"
     ];
+
+    function startMarqueeLoop(events, speed=50, pause=2000) {
+      let content = events.join(" ••• ");
+      function animateMarquee() {
+        marquee.innerHTML = ""; // clear
+        let span = document.createElement("span");
+        span.className = "marquee-content";
+        span.innerHTML = content;
+        marquee.appendChild(span);
+        let width = span.offsetWidth;
+        let pos = marquee.offsetWidth;
+        function frame() {
+          pos -= 1;
+          span.style.left = pos + "px";
+          if (pos + width < 0) {
+            setTimeout(animateMarquee, pause); // Pausa de 2 segundos
+            return;
+          }
+          requestAnimationFrame(frame);
+        }
+        frame();
+      }
+      animateMarquee();
+    }
+
+    function setEvents(eventsList) {
+      startMarqueeLoop(eventsList, 50, 2000); // Velocidade e pausa (2s)
+    }
+
     Promise.all([
       fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=jewelry&sort_by=date&token=${EB_TOKEN}`).then(r => r.json()),
       fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=gem&sort_by=date&token=${EB_TOKEN}`).then(r => r.json()),
@@ -107,16 +94,15 @@
           events = events.concat(data.events.filter(ev => ev.start && new Date(ev.start.local) > new Date()));
         }
       });
-      // Remover duplicados pelo id
       const uniqueEvents = Array.from(new Map(events.map(ev => [ev.id, ev])).values());
       if (uniqueEvents.length) {
-        marquee.innerHTML = uniqueEvents.slice(0, 20).map(ev =>
+        setEvents(uniqueEvents.slice(0, 20).map(ev =>
           `<b>${ev.name.text}</b> (${new Date(ev.start.local).toLocaleDateString()}) <a href="${ev.url}" target="_blank" style="color:#ffd700;">Ver</a>`
-        ).join(" • ");
+        ));
       } else {
-        marquee.innerHTML = fallbackEvents.join(" • ");
+        setEvents(fallbackEvents);
       }
-    }).catch(() => marquee.innerHTML = fallbackEvents.join(" • "));
+    }).catch(() => setEvents(fallbackEvents));
     </script>
     <main class="d-flex justify-content-center align-items-center vh-100">
         <div class="container" style="max-width: 420px;">
