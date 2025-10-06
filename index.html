@@ -110,7 +110,6 @@
     const goldErrorDiv = document.getElementById('goldError');
     let goldHistory = [];
 
-    // Preço atual
     function fetchGoldPrice() {
       fetch("https://www.goldapi.io/api/XAU/EUR", {
         headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
@@ -127,7 +126,6 @@
         });
     }
 
-    // Histórico dos últimos 3 meses
     function fetchGoldHistory() {
       fetch("https://www.goldapi.io/api/XAU/EUR/history?period=3m", {
         headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
@@ -161,13 +159,11 @@
         ctx.stroke();
     }
 
-    // Inicialização
     fetchGoldPrice();
     fetchGoldHistory();
     setInterval(fetchGoldPrice, 3600000);
     setInterval(fetchGoldHistory, 3600000);
 
-    // Barra de eventos animada (mantém igual)
     const marquee = document.getElementById('events-marquee');
     const EB_TOKEN = "I7XSPMKHWDAD7HSUG24Q";
     const fallbackEvents = [
@@ -230,7 +226,7 @@
     <main class="d-flex justify-content-center align-items-center vh-100">
         <div class="container" style="max-width: 420px;">
             <div class="card text-center">
-                <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="Header" class="profile-img mb-0">
+                <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="" class="profile-img mb-0">
                 <div class="card-body pb-1">
                     <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
                     <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
@@ -248,9 +244,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="card-footer border-top footer-status">
-                    Residente Suíço - Permissão B | Proficiente em Português e Francês
-                </div>
+                <!-- O footer foi removido para evitar barra branca -->
             </div>
         </div>
     </main>
