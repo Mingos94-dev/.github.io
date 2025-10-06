@@ -21,10 +21,14 @@
         }
         .card {
             border-radius: 0.75rem;
-            /* Fundo semi-transparente para dar efeito de continuidade */
-            background: rgba(255,255,255,0.7); /* 70% branco, 30% transparente */
+            background: none; /* sem fundo! */
             box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-            backdrop-filter: blur(2px); /* Suaviza e mistura com o fundo */
+        }
+        .card-body, .card-footer {
+            background: none !important; /* sem fundo nessas partes também */
+        }
+        .card-title, h2, .footer-status, .contact-card p, .btn, .btn-cv {
+            text-shadow: 1px 2px 10px rgba(0,0,0,0.5); /* sombra para melhor leitura */
         }
         .btn-cv {
             background: #333;
@@ -36,7 +40,16 @@
         }
         .footer-status {
             font-size: 0.98em;
-            color: #555;
+            color: #fff;
+        }
+        h1, h2 {
+            color: #fff;
+        }
+        .card-title {
+            color: #fff;
+        }
+        .contact-card p, .contact-card a {
+            color: #fff;
         }
     </style>
 </head>
@@ -47,10 +60,10 @@
                 <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="Header" class="profile-img mb-0">
                 <div class="card-body pb-1">
                     <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
-                    <h2 class="fs-6 text-secondary fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
-                    <div class="mb-3">
-                        <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com" class="link-primary">domingosrfpereira.94@gmail.com</a></p>
-                        <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297" class="link-primary">+41 76 242 1297</a></p>
+                    <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
+                    <div class="contact-card mb-3">
+                        <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
+                        <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></p>
                         <p class="mb-0"><i class="bi bi-geo-alt"></i> Nyon, Suíça</p>
                     </div>
                     <div class="d-flex justify-content-center gap-3 mb-2">
@@ -62,7 +75,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="card-footer bg-white footer-status border-top">
+                <div class="card-footer border-top footer-status">
                     Residente Suíço - Permissão B | Proficiente em Português e Francês
                 </div>
             </div>
