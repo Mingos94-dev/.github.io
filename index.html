@@ -1,132 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Domingos Pereira</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Event Bar</title>
     <style>
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #f8f9fa url('joias-de-luxo-1200x900.jpg') center/cover no-repeat;
-            min-height: 100vh;
-            padding-top: 52px; /* espaço para a barra de eventos */
+            padding: 20px;
         }
-        /* Barra de eventos */
         .event-bar {
-            position: fixed;
-            top: 0; left: 0; width: 100%; z-index: 9999;
-            background: #111;
-            color: #fff;
-            padding: 8px 0;
-            font-size: 1em;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: 100px; /* Double height */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px;
         }
-        .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 35s linear infinite;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(100%);}
-            100% { transform: translateX(-100%);}
-        }
-        .profile-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 0.75rem 0.75rem 0 0;
-        }
-        .card {
-            border-radius: 0.75rem;
-            background: none;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-        }
-        .card-body, .card-footer {
-            background: none !important;
-        }
-        .card-title, h2, .footer-status, .contact-card p, .btn, .btn-cv {
-            text-shadow: 1px 2px 10px rgba(0,0,0,0.5);
-        }
-        .btn-cv {
-            background: #333;
-            color: #fff;
-        }
-        .btn-cv:hover {
-            background: #222;
-            color: #fff;
-        }
-        .footer-status {
-            font-size: 0.98em;
-            color: #fff;
-        }
-        h1, h2 {
-            color: #fff;
-        }
-        .card-title {
-            color: #fff;
-        }
-        .contact-card p, .contact-card a {
-            color: #fff;
+        .search-input {
+            width: 300px;
         }
     </style>
 </head>
 <body>
-    <!-- Barra de eventos de joalharia automática via Eventbrite -->
     <div class="event-bar">
-        <div class="overflow-hidden">
-            <div id="events-marquee" class="marquee">Carregando eventos de joalharia...</div>
-        </div>
+        <h1>Search Events</h1>
+        <input type="text" class="search-input" placeholder="Search for multiple keywords...">
+        <button onclick="searchEvents()">Search</button>
     </div>
     <script>
-    const marquee = document.getElementById('events-marquee');
-    const EB_TOKEN = "I7XSPMKHWDAD7HSUG24Q";
-
-    fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=jewelry&sort_by=date&token=${EB_TOKEN}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.events && data.events.length) {
-          const events = data.events.map(ev =>
-            `<b>${ev.name.text}</b> (${new Date(ev.start.local).toLocaleDateString()}) - <a href="${ev.url}" target="_blank" style="color:#ffd700;">Ver</a>`
-          ).join(" • ");
-          marquee.innerHTML = events;
-        } else {
-          marquee.textContent = "Nenhum evento de joalharia encontrado no momento.";
+        function searchEvents() {
+            const keywords = document.querySelector('.search-input').value;
+            // Proxy call to Eventbrite API with keywords
+            fetch(`https://api.eventbrite.com/v3/events/search/?q=${keywords}`, {
+                headers: {
+                    'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle displaying events here
+            })
+            .catch(error => console.error('Error:', error));
         }
-      })
-      .catch(() => marquee.textContent = "Erro ao carregar os eventos.");
     </script>
-    <main class="d-flex justify-content-center align-items-center vh-100">
-        <div class="container" style="max-width: 420px;">
-            <div class="card text-center">
-                <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="Header" class="profile-img mb-0">
-                <div class="card-body pb-1">
-                    <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
-                    <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
-                    <div class="contact-card mb-3">
-                        <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
-                        <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></p>
-                        <p class="mb-0"><i class="bi bi-geo-alt"></i> Nyon, Suíça</p>
-                    </div>
-                    <div class="d-flex justify-content-center gap-3 mb-2">
-                        <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
-                            <i class="bi bi-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="domingos_pereira_cv.pdf" target="_blank" class="btn btn-cv">
-                            <i class="bi bi-file-earmark-person"></i> Descarregar CV
-                        </a>
-                    </div>
-                </div>
-                <div class="card-footer border-top footer-status">
-                    Residente Suíço - Permissão B | Proficiente em Português e Francês
-                </div>
-            </div>
-        </div>
-    </main>
-    <!-- Bootstrap JS + Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </body>
 </html>
