@@ -12,7 +12,7 @@
             font-family: 'Montserrat', Arial, sans-serif;
             background: #f8f9fa url('joias-de-luxo-1200x900.jpg') center/cover no-repeat;
             min-height: 100vh;
-            padding-top: 120px; /* espaço para barra de eventos + widget ouro */
+            padding-top: 68px; /* espaço para barra de eventos */
         }
         .event-bar {
             position: fixed;
@@ -32,37 +32,59 @@
         }
         .gold-widget-top {
             position: fixed;
-            top: 68px;
-            right: 0;
-            left: 0;
+            top: 78px;
+            right: 16px;
             z-index: 9998;
-            background: #fffbe6;
+            background: rgba(255, 251, 230, 0.95);
             color: #222;
-            border-bottom: 1px solid #ffd700;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-            padding: 10px 24px 12px 24px;
+            border: 1px solid #ffd700;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 12px 16px;
             display: flex;
-            justify-content: flex-end;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 8px;
+            min-width: 180px;
+            max-width: 220px;
         }
         .gold-widget-top .gold-price-label {
-            font-size: 1.1em;
+            font-size: 0.95em;
             font-weight: bold;
             color: #c0932d;
+            text-align: center;
+            white-space: nowrap;
         }
         .gold-widget-top #goldError {
             color: #ff8080;
-            font-size: 0.95em;
-            margin-left: 18px;
+            font-size: 0.75em;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 100%;
         }
         .gold-widget-top .gold-chart {
-            width: 140px;
-            height: 40px;
+            width: 160px;
+            height: 50px;
         }
         @media (max-width: 600px) {
-            .gold-widget-top { flex-wrap: wrap; gap: 4px; padding: 8px 4px;}
-            .gold-widget-top .gold-chart { width: 100px; height: 30px;}
+            .gold-widget-top { 
+                top: 78px;
+                right: 8px;
+                min-width: 140px;
+                max-width: 160px;
+                padding: 10px 12px;
+                gap: 6px;
+            }
+            .gold-widget-top .gold-price-label {
+                font-size: 0.85em;
+            }
+            .gold-widget-top .gold-chart { 
+                width: 120px; 
+                height: 40px;
+            }
+            .gold-widget-top #goldError {
+                font-size: 0.7em;
+            }
         }
     </style>
 </head>
@@ -76,7 +98,7 @@
     <!-- Widget do ouro sempre visível no topo -->
     <div class="gold-widget-top" id="goldWidget">
         <div class="gold-price-label">Grama Ouro: <span id="goldPrice">...</span> €</div>
-        <canvas id="goldChart" class="gold-chart" width="140" height="40"></canvas>
+        <canvas id="goldChart" class="gold-chart" width="160" height="50"></canvas>
         <div id="goldError"></div>
     </div>
     <script>
