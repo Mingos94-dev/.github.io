@@ -73,22 +73,41 @@
             font-size: 0.95em;
             margin-top: 2px;
         }
-        .card {
-            background: transparent !important;
-            box-shadow: none !important;
-            border: none !important;
+        /* Card: retângulo discreto à esquerda, centralizado verticalmente */
+        .left-center-card-container {
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            pointer-events: none;
         }
-        @media (max-width: 600px) {
-            .gold-widget-card {
-                width: 98vw;
-                right: 1vw;
-                top: 70px;
-                padding: 10px 8px 8px 8px;
+        .left-center-card-container .card {
+            margin-left: 4vw;
+            max-width: 420px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            border: 1.5px solid #e2e2e2;
+            pointer-events: auto;
+        }
+        .profile-img {
+            border-radius: 14px 14px 0 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        @media (max-width: 800px) {
+            .left-center-card-container .card {
+                margin-left: 2vw;
+                max-width: 98vw;
             }
-            .gold-chart {
-                width: 98vw;
-                max-width: 160px;
-                height: 40px;
+        }
+        @media (max-width: 500px) {
+            .left-center-card-container .card {
+                margin-left: 0;
+                border-radius: 0;
             }
         }
     </style>
@@ -228,31 +247,29 @@
       }
     }).catch(() => setEvents(fallbackEvents));
     </script>
-    <main class="d-flex justify-content-start align-items-center vh-100">
-        <div class="container" style="max-width: 420px;">
-            <div class="card text-center ms-0">
-                <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="" class="profile-img mb-0">
-                <div class="card-body pb-1">
-                    <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
-                    <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
-                    <div class="contact-card mb-3">
-                        <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
-                        <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></p>
-                        <p class="mb-0"><i class="bi bi-geo-alt"></i> Nyon, Suíça</p>
-                    </div>
-                    <div class="d-flex justify-content-center gap-3 mb-2">
-                        <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
-                            <i class="bi bi-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="domingos_pereira_cv.pdf" target="_blank" class="btn btn-cv">
-                            <i class="bi bi-file-earmark-person"></i> Descarregar CV
-                        </a>
-                    </div>
+    <!-- Cartão à esquerda centralizado verticalmente -->
+    <div class="left-center-card-container">
+        <div class="card text-center">
+            <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="" class="profile-img mb-0">
+            <div class="card-body pb-1">
+                <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
+                <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
+                <div class="contact-card mb-3">
+                    <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
+                    <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></p>
+                    <p class="mb-0"><i class="bi bi-geo-alt"></i> Nyon, Suíça</p>
                 </div>
-                <!-- O footer foi removido para fundo integral -->
+                <div class="d-flex justify-content-center gap-3 mb-2">
+                    <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="domingos_pereira_cv.pdf" target="_blank" class="btn btn-cv">
+                        <i class="bi bi-file-earmark-person"></i> Descarregar CV
+                    </a>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
     <!-- Bootstrap JS + Icons -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
