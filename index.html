@@ -110,21 +110,42 @@
                 border-radius: 0;
             }
         }
-        /* Footer personalizado para destaque */
-        .custom-footer {
+        /* Footer de informação destacado */
+        .info-footer {
             position: fixed;
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            background: rgba(30,30,30,0.60);
+            width: 90vw;
+            max-width: 600px;
+            background: rgba(30,30,30,0.65);
             color: #fff;
-            padding: 12px 32px;
-            border-radius: 12px;
-            font-size: 1.05em;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.20);
+            padding: 26px 18px 18px 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            border-radius: 18px;
             z-index: 10000;
             text-align: center;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
+        }
+        .info-footer a {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        .info-footer .btn-cv {
+            background: #ffd700;
+            color: #222;
+            border: none;
+        }
+        .info-footer .btn-cv:hover {
+            background: #ffec80;
+            color: #111;
+        }
+        @media (max-width: 600px) {
+            .info-footer {
+                font-size: 0.95em;
+                padding: 14px 4vw 8px 4vw;
+                max-width: 98vw;
+            }
         }
     </style>
 </head>
@@ -263,32 +284,29 @@
       }
     }).catch(() => setEvents(fallbackEvents));
     </script>
-    <!-- Cartão à esquerda centralizado verticalmente -->
-    <div class="left-center-card-container">
-        <div class="card text-center">
-            <img src="https://via.placeholder.com/420x150?text=Header+Image" alt="" class="profile-img mb-0">
-            <div class="card-body pb-1">
-                <h1 class="card-title fs-2 fw-bold mb-1">Domingos Pereira</h1>
-                <h2 class="fs-6 fw-normal border-bottom pb-2 mb-3">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
-                <div class="contact-card mb-3">
-                    <p class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></p>
-                    <p class="mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></p>
-                    <p class="mb-0"><i class="bi bi-geo-alt"></i> Nyon, Suíça</p>
-                </div>
-                <div class="d-flex justify-content-center gap-3 mb-2">
-                    <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="domingos_pereira_cv.pdf" target="_blank" class="btn btn-cv">
-                        <i class="bi bi-file-earmark-person"></i> Descarregar CV
-                    </a>
-                </div>
+    <!-- Footer de informação destacado -->
+    <footer class="info-footer">
+      <div class="container">
+        <div class="row justify-content-center align-items-center g-3">
+          <div class="col-12 col-md-auto text-center">
+            <h1 class="fs-2 fw-bold mb-1">Domingos Pereira</h1>
+            <h2 class="fs-6 fw-normal mb-2">Técnico de Precisão | Joalharia &amp; Relojoaria</h2>
+            <div>
+              <span class="d-block mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></span>
+              <span class="d-block mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></span>
+              <span class="d-block mb-2"><i class="bi bi-geo-alt"></i> Nyon, Suíça</span>
             </div>
+            <div class="d-flex justify-content-center gap-3 mb-1">
+              <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
+                <i class="bi bi-linkedin"></i> LinkedIn
+              </a>
+              <a href="domingos_pereira_cv.pdf" target="_blank" class="btn btn-cv">
+                <i class="bi bi-file-earmark-person"></i> Descarregar CV
+              </a>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Footer destacado -->
-    <footer class="custom-footer">
-      Residente Suíço - Permissão B | Proficiente em Português e Francês
+      </div>
     </footer>
     <!-- Bootstrap JS + Icons -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
