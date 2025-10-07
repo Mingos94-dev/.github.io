@@ -38,7 +38,16 @@
             background: #222;
             color: #ffd700;
             border: 2px solid #ffd700;
-            border-radius: 1.15em;
+            border-radius: 14px;
+            padding: 12px 16px 8px 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.30);
+            width: 245px;
+            max-width: 90vw;
+            font-size: 1em;
+            opacity: 0.98;
+        }
+        .gold-price-label {
+            font-size: 1.15em;
             font-weight: bold;
             color: #ffd700;
             margin-bottom: 4px;
@@ -174,13 +183,13 @@
     let goldHistory = [];
 
     function fetchGoldPrice() {
-      fetch("https://www.goldapi.io/api/XAU/EUR", {
+      fetch("https://corsproxy.io/?https://www.goldapi.io/api/XAU/EUR", {
         headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
       })
         .then(r => r.json())
         .then(data => {
-          let pricePerOz = data.price_gram_24k ? data.price_gram_24k : (data.price / 31.1035);
-          goldPriceSpan.textContent = pricePerOz.toFixed(2);
+          let pricePerGram = data.price_gram_24k ? data.price_gram_24k : (data.price / 31.1035);
+          goldPriceSpan.textContent = pricePerGram ? pricePerGram.toFixed(2) : "Unavailable";
           goldErrorDiv.textContent = '';
         })
         .catch(() => {
@@ -190,7 +199,7 @@
     }
 
     function fetchGoldHistory() {
-      fetch("https://www.goldapi.io/api/XAU/EUR/history?period=3m", {
+      fetch("https://corsproxy.io/?https://www.goldapi.io/api/XAU/EUR/history?period=3m", {
         headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
       })
         .then(r => r.json())
