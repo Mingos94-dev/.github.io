@@ -73,43 +73,6 @@
             font-size: 0.95em;
             margin-top: 2px;
         }
-        /* Card: left, vertically centered, transparent background */
-        .left-center-card-container {
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            display: flex;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            pointer-events: none;
-        }
-        .left-center-card-container .card {
-            margin-left: 4vw;
-            max-width: 420px;
-            background: rgba(255,255,255,0.0); /* transparent */
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-            border: none;
-            pointer-events: auto;
-        }
-        .profile-img {
-            border-radius: 14px 14px 0 0;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        @media (max-width: 800px) {
-            .left-center-card-container .card {
-                margin-left: 2vw;
-                max-width: 98vw;
-            }
-        }
-        @media (max-width: 500px) {
-            .left-center-card-container .card {
-                margin-left: 0;
-                border-radius: 0;
-            }
-        }
         /* Info footer styling */
         .info-footer {
             position: fixed;
@@ -176,7 +139,7 @@
     </div>
     <script>
     // GOLDAPI CONFIG
-    const GOLD_API_KEY = "goldapi-akhgqz19mgfdz3ce-io";
+    const GOLD_API_KEY = "goldapi-3ypbusmgg1sf3k-io";
     const goldPriceSpan = document.getElementById('goldPrice');
     const goldChartCanvas = document.getElementById('goldChart');
     const goldErrorDiv = document.getElementById('goldError');
@@ -188,7 +151,7 @@
       })
         .then(r => r.json())
         .then(data => {
-          let pricePerGram = data.price_gram_24k ? data.price_gram_24k : (data.price / 31.1035);
+          let pricePerGram = data.price_gram_24k || data.price_gram_22k || data.price_gram_21k || (data.price ? data.price / 31.1035 : null);
           goldPriceSpan.textContent = pricePerGram ? pricePerGram.toFixed(2) : "Unavailable";
           goldErrorDiv.textContent = '';
         })
@@ -204,7 +167,7 @@
       })
         .then(r => r.json())
         .then(data => {
-          goldHistory = (data?.history || []).map(day => day.price_gram_24k || (day.price / 31.1035));
+          goldHistory = (data?.history || []).map(day => day.price_gram_24k || day.price_gram_22k || day.price_gram_21k || (day.price ? day.price / 31.1035 : null));
           drawGoldChart(goldHistory);
         })
         .catch(() => {
