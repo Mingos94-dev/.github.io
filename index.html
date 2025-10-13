@@ -1,308 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Domingos Pereira</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #f8f9fa url('joias-de-luxo-1200x900.jpg') center/cover no-repeat;
-            min-height: 100vh;
-            padding-top: 120px;
-        }
-        .event-bar {
-            position: fixed;
-            top: 0; left: 0; width: 100%; z-index: 9999;
-            background: #111;
-            color: #fff;
-            padding: 16px 0;
-            font-size: 1.4em;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            overflow: hidden;
-        }
-        .marquee-content {
-            display: inline-block;
-            white-space: nowrap;
-            position: relative;
-            left: 100%;
-        }
-        .gold-widget-card {
-            position: fixed;
-            top: 86px;
-            right: 36px;
-            z-index: 9999;
-            background: #222;
-            color: #ffd700;
-            border: 2px solid #ffd700;
-            border-radius: 14px;
-            padding: 12px 16px 8px 16px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.30);
-            width: 245px;
-            max-width: 90vw;
-            font-size: 1em;
-            opacity: 0.98;
-        }
-        .gold-price-label {
-            font-size: 1.15em;
-            font-weight: bold;
-            color: #ffd700;
-            margin-bottom: 4px;
-        }
-        .gold-chart {
-            width: 180px;
-            height: 60px;
-            background: #222;
-            border-radius: 5px;
-            margin-top: 6px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .gold-chart-label {
-            font-size: 0.95em;
-            color: #eee;
-            margin-top: 6px;
-            text-align: right;
-        }
-        #goldError {
-            color: #ff8080;
-            font-size: 0.95em;
-            margin-top: 2px;
-        }
-        .info-footer {
-            position: fixed;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            width: 90vw;
-            max-width: 600px;
-            background: rgba(30,30,30,0.65);
-            color: #fff;
-            padding: 26px 18px 18px 18px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-            border-radius: 18px;
-            z-index: 10000;
-            text-align: center;
-            backdrop-filter: blur(4px);
-        }
-        .info-footer a[href^="mailto"], 
-        .info-footer a[href^="tel"] {
-            color: #007bff;
-            text-decoration: underline;
-        }
-        .info-footer .btn-cv {
-            display: none;
-        }
-        .info-footer .btn-primary {
-            background: #007bff;
-            color: #fff;
-            border: none;
-        }
-        .info-footer .btn-primary:hover {
-            background: #0056b3;
-            color: #fff;
-        }
-        .left-center-button-container {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10001;
-            display: flex;
-            align-items: center;
-            padding-left: 24px;
-            pointer-events: auto;
-        }
-        .left-center-button-container .btn {
-            font-size: 1.25em;
-            padding: 16px 28px;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-        }
-        @media (max-width: 600px) {
-            .info-footer {
-                font-size: 0.95em;
-                padding: 14px 4vw 8px 4vw;
-                max-width: 98vw;
-            }
-            .left-center-button-container {
-                padding-left: 8px;
-            }
-            .left-center-button-container .btn {
-                font-size: 1em;
-                padding: 10px 14px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domingos Jewelry</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f8f9fa;
+    }
+    .navbar-brand {
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .hero-section {
+      background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 450px;
+      color: #fff;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top:0;left:0;width:100%;height:100%;
+      background: rgba(25, 19, 15, 0.45);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-top: 18px;
+    }
+    .lang-select {
+      margin-left: auto;
+      margin-right: 1.5rem;
+    }
+    .collection-img {
+      border-radius: 8px;
+      object-fit: cover;
+      width: 100%;
+      height: 250px;
+    }
+    .about-img {
+      border-radius: 12px;
+      width: 100%;
+      max-width: 350px;
+      margin-bottom: 18px;
+    }
+    .footer {
+      background: #222;
+      color: #eee;
+      padding: 32px 0 0 0;
+      margin-top: 60px;
+    }
+    .footer a {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+    @media (max-width: 800px) {
+      .hero-section { min-height: 320px; }
+      .hero-content h1 { font-size: 1.5rem; }
+      .collection-img { height: 140px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Left vertical button -->
-    <div class="left-center-button-container">
-        <a href="jewelry-history.html" class="btn btn-secondary btn-lg" title="Jewelry History">
-            <i class="bi bi-book"></i> Jewelry History
-        </a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Domingos Jewelry</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="lang-select">
+        <select id="langSelect" class="form-select form-select-sm">
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+        </select>
+      </div>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navLinks">
+          <!-- Menu will be filled by JS -->
+        </ul>
+      </div>
     </div>
-    <!-- Events bar -->
-    <div class="event-bar">
-        <div class="overflow-hidden">
-            <div id="events-marquee" style="width:100%;height:2em;"></div>
-        </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section d-flex">
+    <div class="container hero-content">
+      <h1 id="heroTitle">Timeless Jewelry for Every Moment</h1>
+      <p id="heroSubtitle">Handcrafted luxury pieces, inspired by European tradition.</p>
+      <a href="#collections" class="btn btn-warning btn-lg mt-4" id="shopBtn">Shop Collection</a>
     </div>
-    <!-- Gold widget -->
-    <div class="gold-widget-card" id="goldWidget">
-        <div class="gold-price-label">Gold per Gram: <span id="goldPrice">...</span> €</div>
-        <canvas id="goldChart" class="gold-chart" width="180" height="60"></canvas>
-        <div id="goldError"></div>
-        <div class="gold-chart-label">Last 3 months</div>
-    </div>
-    <script>
-    // GOLDAPI CONFIG
-    const GOLD_API_KEY = "goldapi-3ypbusmgg1sf3k-io";
-    const goldPriceSpan = document.getElementById('goldPrice');
-    const goldChartCanvas = document.getElementById('goldChart');
-    const goldErrorDiv = document.getElementById('goldError');
-    let goldHistory = [];
+  </section>
 
-    function fetchGoldPrice() {
-      fetch("https://corsproxy.io/?https://www.goldapi.io/api/XAU/EUR", {
-        headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
-      })
-        .then(r => r.json())
-        .then(data => {
-          let pricePerGram = data.price_gram_24k || data.price_gram_22k || data.price_gram_21k || (data.price ? data.price / 31.1035 : null);
-          goldPriceSpan.textContent = pricePerGram ? pricePerGram.toFixed(2) : "Unavailable";
-          goldErrorDiv.textContent = '';
-        })
-        .catch(() => {
-          goldPriceSpan.textContent = "Unavailable";
-          goldErrorDiv.textContent = "Error fetching gold price.";
-        });
-    }
-
-    function fetchGoldHistory() {
-      fetch("https://corsproxy.io/?https://www.goldapi.io/api/XAU/EUR/history?period=3m", {
-        headers: { "x-access-token": GOLD_API_KEY, "Content-Type": "application/json" }
-      })
-        .then(r => r.json())
-        .then(data => {
-          goldHistory = (data?.history || []).map(day => day.price_gram_24k || day.price_gram_22k || day.price_gram_21k || (day.price ? day.price / 31.1035 : null));
-          drawGoldChart(goldHistory);
-        })
-        .catch(() => {
-          goldErrorDiv.textContent = "Error fetching gold history.";
-          drawGoldChart([]);
-        });
-    }
-
-    function drawGoldChart(data) {
-        const ctx = goldChartCanvas.getContext('2d');
-        ctx.clearRect(0, 0, goldChartCanvas.width, goldChartCanvas.height);
-        ctx.strokeStyle = "#ffd700";
-        ctx.lineWidth = 2;
-        if (!data || data.length < 2) return;
-        ctx.beginPath();
-        let min = Math.min(...data), max = Math.max(...data);
-        let W = goldChartCanvas.width, H = goldChartCanvas.height;
-        data.forEach((v, i) => {
-            let x = (i/(data.length-1))*W;
-            let y = H - ((v-min)/(max-min||1))*H;
-            if (i === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-    }
-
-    fetchGoldPrice();
-    fetchGoldHistory();
-    setInterval(fetchGoldPrice, 3600000);
-    setInterval(fetchGoldHistory, 3600000);
-
-    const marquee = document.getElementById('events-marquee');
-    const EB_TOKEN = "I7XSPMKHWDAD7HSUG24Q";
-    const fallbackEvents = [
-      "<b>Baselworld 2026 (Switzerland)</b> ~ March 2026 <a href='https://www.baselworld.com/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>JCK Las Vegas 2025 (USA)</b> ~ June 2025 <a href='https://www.jckonline.com/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>VicenzaOro 2026 (Italy)</b> ~ January 2026 <a href='https://www.vicenzaoro.com/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>Hong Kong Jewellery & Gem Fair 2025</b> ~ September 2025 <a href='https://www.jewellerynet.com/en/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>FENINJER 2026 (Brazil)</b> ~ February 2026 <a href='https://www.feninjer.com.br/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>S.I.H.H. Geneva 2026 (Switzerland)</b> ~ April 2026 <a href='https://www.hautehorlogerie.org/' target='_blank' style='color:#ffd700;'>View</a>",
-      "<b>International Jewellery London 2025</b> ~ September 2025 <a href='https://www.jewellerylondon.com/' target='_blank' style='color:#ffd700;'>View</a>"
-    ];
-    function startMarqueeLoop(events, speed=50, pause=2000) {
-      let content = events.join(" ••• ");
-      function animateMarquee() {
-        marquee.innerHTML = "";
-        let span = document.createElement("span");
-        span.className = "marquee-content";
-        span.innerHTML = content;
-        marquee.appendChild(span);
-        let width = span.offsetWidth;
-        let pos = marquee.offsetWidth;
-        function frame() {
-          pos -= 1;
-          span.style.left = pos + "px";
-          if (pos + width < 0) {
-            setTimeout(animateMarquee, pause);
-            return;
-          }
-          requestAnimationFrame(frame);
-        }
-        frame();
-      }
-      animateMarquee();
-    }
-    function setEvents(eventsList) {
-      startMarqueeLoop(eventsList, 50, 2000);
-    }
-    Promise.all([
-      fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=jewelry&sort_by=date&token=${EB_TOKEN}`).then(r => r.json()),
-      fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=gem&sort_by=date&token=${EB_TOKEN}`).then(r => r.json()),
-      fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=watches&sort_by=date&token=${EB_TOKEN}`).then(r => r.json()),
-      fetch(`https://corsproxy.io/?https://www.eventbriteapi.com/v3/events/search/?q=relojoaria&sort_by=date&token=${EB_TOKEN}`).then(r => r.json())
-    ]).then(responses => {
-      let events = [];
-      responses.forEach(data => {
-        if (data.events && data.events.length) {
-          events = events.concat(data.events.filter(ev => ev.start && new Date(ev.start.local) > new Date()));
-        }
-      });
-      const uniqueEvents = Array.from(new Map(events.map(ev => [ev.id, ev])).values());
-      if (uniqueEvents.length) {
-        setEvents(uniqueEvents.slice(0, 20).map(ev =>
-          `<b>${ev.name.text}</b> (${new Date(ev.start.local).toLocaleDateString()}) <a href="${ev.url}" target="_blank" style="color:#ffd700;">View</a>`
-        ));
-      } else {
-        setEvents(fallbackEvents);
-      }
-    }).catch(() => setEvents(fallbackEvents));
-    </script>
-    <!-- Info Footer -->
-    <footer class="info-footer">
-      <div class="container">
-        <div class="row justify-content-center align-items-center g-3">
-          <div class="col-12 col-md-auto text-center">
-            <h1 class="fs-2 fw-bold mb-1">Domingos Pereira</h1>
-            <h2 class="fs-6 fw-normal mb-2">Precision Technician | Jewelry & Watchmaking</h2>
-            <div>
-              <span class="d-block mb-1"><i class="bi bi-envelope"></i> <a href="mailto:domingosrfpereira.94@gmail.com">domingosrfpereira.94@gmail.com</a></span>
-              <span class="d-block mb-1"><i class="bi bi-telephone"></i> <a href="tel:+41762421297">+41 76 242 1297</a></span>
-              <span class="d-block mb-2"><i class="bi bi-geo-alt"></i> Nyon, Switzerland</span>
-            </div>
-            <div class="d-flex justify-content-center gap-3 mb-1">
-              <a href="https://www.linkedin.com/in/domingos-pereira-b728662b1" target="_blank" class="btn btn-primary" title="LinkedIn">
-                <i class="bi bi-linkedin"></i> LinkedIn
-              </a>
-              <!-- CV button removed -->
-            </div>
+  <!-- Collections -->
+  <section class="container my-5" id="collections">
+    <h2 class="text-center mb-4" id="collectionsTitle">Featured Collections</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb22883bb59?auto=format&fit=crop&w=800&q=80" class="collection-img" alt="Rings">
+          <div class="card-body text-center">
+            <h5 class="card-title" id="ringTitle">Rings</h5>
+            <p class="card-text" id="ringDesc">Elegant rings crafted with exquisite details.</p>
+            <a href="#" class="btn btn-outline-warning" id="ringBtn">View Rings</a>
           </div>
         </div>
       </div>
-    </footer>
-    <!-- Bootstrap JS + Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80" class="collection-img" alt="Necklaces">
+          <div class="card-body text-center">
+            <h5 class="card-title" id="necklaceTitle">Necklaces</h5>
+            <p class="card-text" id="necklaceDesc">Timeless necklaces to elevate any look.</p>
+            <a href="#" class="btn btn-outline-warning" id="necklaceBtn">View Necklaces</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" class="collection-img" alt="Bracelets">
+          <div class="card-body text-center">
+            <h5 class="card-title" id="braceletTitle">Bracelets</h5>
+            <p class="card-text" id="braceletDesc">Graceful bracelets for every occasion.</p>
+            <a href="#" class="btn btn-outline-warning" id="braceletBtn">View Bracelets</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="container my-5 py-4" id="about">
+    <div class="row align-items-center">
+      <div class="col-md-5 text-center">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Jeweler" class="about-img">
+      </div>
+      <div class="col-md-7">
+        <h2 id="aboutTitle">About Domingos Jewelry</h2>
+        <p id="aboutText">
+          Each piece is a celebration of craftsmanship and timeless elegance. Our collections are inspired by the rich history of European jewelry, blending classic artistry with modern sensibilities. Discover the story and passion behind every creation.
+        </p>
+        <a href="#contact" class="btn btn-outline-dark mt-3" id="aboutBtn">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container my-5" id="contact">
+    <h2 class="text-center mb-4" id="contactTitle">Contact</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <p><strong>Email:</strong> <a href="mailto:info@domingosjewelry.com">info@domingosjewelry.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+41762421297">+41 76 242 1297</a></p>
+        <p><strong>Location:</strong> Nyon, Switzerland</p>
+        <div>
+          <a href="#" class="me-3"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/icons/linkedin.svg" alt="LinkedIn" width="28"></a>
+          <a href="#" class="me-3"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/icons/instagram.svg" alt="Instagram" width="28"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer mt-5">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-12">
+          <p>&copy; 2024 Domingos Jewelry. All rights reserved.</p>
+          <p>
+            <a href="#about" id="footerAbout">About</a> |
+            <a href="#collections" id="footerCollections">Collections</a> |
+            <a href="#contact" id="footerContact">Contact</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Language & Menu JS -->
+  <script>
+    // Multilingual content
+    const content = {
+      en: {
+        menu: ["Jewelry", "About", "Contact", "CollectionsShop Collection",
+        collectionsTitle: "Featured Collections",
+        ringTitle: "Rings",
+        ringDesc: "Elegant rings crafted with exquisite details.",
+        ringBtn: "View Rings",
+        necklaceTitle: "Necklaces",
+        necklaceDesc: "Timeless necklaces to elevate any look.",
+        necklaceBtn: "View Necklaces",
+        braceletTitle: "Bracelets",
+        braceletDesc: "Graceful bracelets for every occasion.",
+        braceletBtn: "View Bracelets",
+        aboutTitle: "About Domingos Jewelry",
+        aboutText: "Each piece is a celebration of craftsmanship and timeless elegance. Our collections are inspired by bijoux intemporels pour chaque moment",
+        heroSubtitle: "Des pièces de luxe faites à la main, inspirées par la tradition européenne.",
+        shopBtn: "Voir la collection",
+        collectionsTitle: "Collections en vedette",
+        ringTitle: "Bagues",
+        ringDesc: "Bagues élégantes fabriquées avec des détails exquis.",
+        ringBtn: "Voir les bagues",
+        necklaceTitle: "Colliers",
+        necklaceDesc: "Colliers intemporels pour sublimer chaque tenue.",
+        necklaceBtn: "Voir les colliers",
+        braceletTitle: "Bracelets",
+        braceletDesc: "Bracelets gracieux pour toutes les occasions.",
+        braceletBtn: "Voir les bracelets",
+        aboutTitle: "À propos de Domingos Jewelry",
+        aboutText: "Chaque pièce est une célébration du savoir-faire et de l'élégance intemporelle. Nos collections s'inspirent de la riche histoire de la joaillerie européenne, mêlant art classique et sensibilité moderne. Découvrez l'histoire et la passion derrière chaque création.",
+        aboutBtn: "En savoir plus",
+        contactTitle: "Contact",
+        footerAbout: "À propos",
+        footerCollections: "Collections",
+        footerContact: "Contact"
+      }
+    };
+
+    function setLanguage(lang) {
+      const c = content[lang];
+      const navLinks = document.getElementById('navLinks');
+      navLinks.innerHTML = "";
+      c.menu.forEach((item, i) => {
+        let href = "#";
+        if (item.toLowerCase().includes("about") || item.toLowerCase().includes("propos")) href = "#about";
+        if (item.toLowerCase().includes("contact")) href = "#contact";
+        if (item.toLowerCase().includes("collections")) href = "#collections";
+        if (item.toLowerCase().includes("jewelry") || item.toLowerCase().includes("bijoux")) href = "#collections";
+        const li = document.createElement("li");
+        li.className = "nav-item";
+        li.innerHTML = `<a class="nav-link" href="${href}">${item}</a>`;
+        navLinks.appendChild(li);
+      });
+      document.getElementById('heroTitle').textContent = c.heroTitle;
+      document.getElementById('heroSubtitle').textContent = c.heroSubtitle;
+      document.getElementById('shopBtn').textContent = c.shopBtn;
+      document.getElementById('collectionsTitle').textContent = c.collectionsTitle;
+      document.getElementById('ringTitle').textContent = c.ringTitle;
+      document.getElementById('ringDesc').textContent = c.ringDesc;
+      document.getElementById('ringBtn').textContent = c.ringBtn;
+      document.getElementById('necklaceTitle').textContent = c.necklaceTitle;
+      document.getElementById('necklaceDesc').textContent = c.necklaceDesc;
+      document.getElementById('necklaceBtn').textContent = c.necklaceBtn;
+      document.getElementById('braceletTitle').textContent = c.braceletTitle;
+      document.getElementById('braceletDesc').textContent = c.braceletDesc;
+      document.getElementById('braceletBtn').textContent = c.braceletBtn;
+      document.getElementById('aboutTitle').textContent = c.aboutTitle;
+      document.getElementById('aboutText').textContent = c.aboutText;
+      document.getElementById('aboutBtn').textContent = c.aboutBtn;
+      document.getElementById('contactTitle').textContent = c.contactTitle;
+      document.getElementById('footerAbout').textContent = c.footerAbout;
+      document.getElementById('footerCollections').textContent = c.footerCollections;
+      document.getElementById('footerContact').textContent = c.footerContact;
+    }
+
+    // Init language
+    document.getElementById('langSelect').addEventListener('change', function() {
+      setLanguage(this.value);
+    });
+    setLanguage('en');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
