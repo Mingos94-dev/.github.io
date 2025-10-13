@@ -16,8 +16,23 @@
       font-weight: bold;
       font-size: 1.5rem;
     }
+    .nav-link {
+      font-size: 1.1rem;
+      margin-right: 1.2rem;
+      color: #222 !important;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: #C2A05A !important;
+    }
+    .lang-select {
+      margin-left: auto;
+      margin-right: 1.5rem;
+      min-width: 72px;
+    }
     .hero-section {
-      background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
       min-height: 450px;
       color: #fff;
       position: relative;
@@ -46,10 +61,6 @@
       font-size: 1.3rem;
       margin-top: 18px;
     }
-    .lang-select {
-      margin-left: auto;
-      margin-right: 1.5rem;
-    }
     .collection-img {
       border-radius: 8px;
       object-fit: cover;
@@ -76,6 +87,8 @@
       .hero-section { min-height: 320px; }
       .hero-content h1 { font-size: 1.5rem; }
       .collection-img { height: 140px; }
+      .lang-select { margin-right: 0.3rem;}
+      .nav-link { margin-right: 0.4rem; font-size: 1em;}
     }
   </style>
 </head>
@@ -200,7 +213,15 @@
     // Multilingual content
     const content = {
       en: {
-        menu: ["Jewelry", "About", "Contact", "CollectionsShop Collection",
+        menu: [
+          { text: "Jewelry", href: "#collections" },
+          { text: "About", href: "#about" },
+          { text: "Contact", href: "#contact" },
+          { text: "Collections", href: "#collections" }
+        ],
+        heroTitle: "Timeless Jewelry for Every Moment",
+        heroSubtitle: "Handcrafted luxury pieces, inspired by European tradition.",
+        shopBtn: "Shop Collection",
         collectionsTitle: "Featured Collections",
         ringTitle: "Rings",
         ringDesc: "Elegant rings crafted with exquisite details.",
@@ -212,7 +233,21 @@
         braceletDesc: "Graceful bracelets for every occasion.",
         braceletBtn: "View Bracelets",
         aboutTitle: "About Domingos Jewelry",
-        aboutText: "Each piece is a celebration of craftsmanship and timeless elegance. Our collections are inspired by bijoux intemporels pour chaque moment",
+        aboutText: "Each piece is a celebration of craftsmanship and timeless elegance. Our collections are inspired by the rich history of European jewelry, blending classic artistry with modern sensibilities. Discover the story and passion behind every creation.",
+        aboutBtn: "Learn More",
+        contactTitle: "Contact",
+        footerAbout: "About",
+        footerCollections: "Collections",
+        footerContact: "Contact"
+      },
+      fr: {
+        menu: [
+          { text: "Bijoux", href: "#collections" },
+          { text: "À propos", href: "#about" },
+          { text: "Contact", href: "#contact" },
+          { text: "Collections", href: "#collections" }
+        ],
+        heroTitle: "Des bijoux intemporels pour chaque moment",
         heroSubtitle: "Des pièces de luxe faites à la main, inspirées par la tradition européenne.",
         shopBtn: "Voir la collection",
         collectionsTitle: "Collections en vedette",
@@ -240,14 +275,9 @@
       const navLinks = document.getElementById('navLinks');
       navLinks.innerHTML = "";
       c.menu.forEach((item, i) => {
-        let href = "#";
-        if (item.toLowerCase().includes("about") || item.toLowerCase().includes("propos")) href = "#about";
-        if (item.toLowerCase().includes("contact")) href = "#contact";
-        if (item.toLowerCase().includes("collections")) href = "#collections";
-        if (item.toLowerCase().includes("jewelry") || item.toLowerCase().includes("bijoux")) href = "#collections";
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         li.className = "nav-item";
-        li.innerHTML = `<a class="nav-link" href="${href}">${item}</a>`;
+        li.innerHTML = `<a class="nav-link" href="${item.href}">${item.text}</a>`;
         navLinks.appendChild(li);
       });
       document.getElementById('heroTitle').textContent = c.heroTitle;
